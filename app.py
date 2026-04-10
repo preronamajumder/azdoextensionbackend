@@ -11,7 +11,7 @@ CORS(app)
 def ask():
     #Extract token
     auth_header = request.headers.get("Authorization")
-    print(auth_header)
+    print("Authorization Header: ", auth_header)
     if not auth_header:
         abort(401, "Missing Authorization header")
 
