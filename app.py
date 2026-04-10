@@ -22,11 +22,16 @@ def ask():
         abort(401, "Invalid Azure DevOps token")
 
     #Get question
-    data = request.json
-    question = data.get("question", "")
+    try:
+        data = request.json
+        question = data.get("question", "")
 
-    if not question:
-        return jsonify({"error": "No question provided"}), 400
+        if not question:
+            return jsonify({"error": "No question provided"}), 400
+        
+    except Exception as e:
+        print("Error: ", e)
+        return jsonify({"error": "Failed to process request"}), 500
 
     #Generate mock response
     answer = generate_response(question)

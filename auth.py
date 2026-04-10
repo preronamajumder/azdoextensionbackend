@@ -15,5 +15,6 @@ def validate_azdo_token(token):
 
         return response.status_code == 200
 
-    except Exception:
+    except Exception as e:
+        print("Error: ", e)
         return False
