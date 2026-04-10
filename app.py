@@ -11,11 +11,12 @@ CORS(app)
 def ask():
     #Extract token
     auth_header = request.headers.get("Authorization")
-    # print(auth_header)
+    print(auth_header)
     if not auth_header:
         abort(401, "Missing Authorization header")
 
-    token = auth_header.split(" ")[1]
+    # token = auth_header.split("")[1]
+    token = auth_header
 
     #Validate token with Azure DevOps
     if not validate_azdo_token(token):
