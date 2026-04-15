@@ -1,6 +1,6 @@
 import requests
 
-AZDO_ORG = "your-org-name"
+AZDO_ORG = "preronamajumder"
 
 def validate_azdo_token(token):
     url = f"https://dev.azure.com/{AZDO_ORG}/_apis/projects?api-version=7.0"    #url to check token. need to search
