@@ -15,8 +15,8 @@ def ask():
     if not auth_header:
         abort(401, "Missing Authorization header")
 
-    # token = auth_header.split("")[1]
-    token = auth_header
+    token = auth_header.split("")[1]
+    # token = auth_header
 
     #Validate token with Azure DevOps
     if not validate_azdo_token(token):
