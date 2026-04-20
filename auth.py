@@ -2,7 +2,7 @@ import requests
 
 AZDO_ORG = "preronamajumder"
 
-def validate_azdo_token(token):
+def check_org_access(token):
     url = f"https://dev.azure.com/{AZDO_ORG}/_apis/projects?api-version=7.0"    #url to check token. need to search
 
     try:
@@ -19,7 +19,8 @@ def validate_azdo_token(token):
         print("Error: ", e)
         return False
     
-def validate_azdo_token2(token):
+    
+def validate_azdo_token(token):
     url = "https://app.vssps.visualstudio.com/_apis/profile/profiles/me?api-version=7.0"
 
     try:
