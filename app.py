@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, abort
 from flask_cors import CORS
-from auth import validate_azdo_token
+from auth import *
 from services.service import generate_response
 
 app = Flask(__name__)
@@ -19,7 +19,7 @@ def ask():
     # token = auth_header
 
     #Validate token with Azure DevOps
-    if not validate_azdo_token(token):
+    if not validate_azdo_token2(token):
         # abort(401, "Invalid Azure DevOps token")
         return jsonify({
             "answer": "Invalid Azure DevOps token",

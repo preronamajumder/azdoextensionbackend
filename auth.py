@@ -18,3 +18,18 @@ def validate_azdo_token(token):
     except Exception as e:
         print("Error: ", e)
         return False
+    
+def validate_azdo_token2(token):
+    url = "https://app.vssps.visualstudio.com/_apis/profile/profiles/me?api-version=7.0"
+
+    try:
+        response = requests.get(
+            url,
+            headers={"Authorization": f"Bearer {token}"}
+        )
+
+        return response.status_code == 200
+
+    except Exception as e:
+        print("Error:", e)
+        return False
