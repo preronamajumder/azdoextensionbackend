@@ -19,10 +19,11 @@ def ask():
     # token = auth_header
 
     #Validate token with Azure DevOps
-    if not validate_azdo_token(token):
+    status, text = validate_azdo_token(token)
+    if not status:
         # abort(401, "Invalid Azure DevOps token")
         return jsonify({
-            "answer": "Invalid Azure DevOps token",
+            "answer": text,
             "status": "error"
         })
 

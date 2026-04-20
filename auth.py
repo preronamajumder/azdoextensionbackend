@@ -29,8 +29,8 @@ def validate_azdo_token(token):
             headers={"Authorization": f"Bearer {token}"}
         )
 
-        return response.status_code == 200
+        return response.status_code == 200, response.text
 
     except Exception as e:
         print("Error:", e)
-        return False
+        return False, "error"
