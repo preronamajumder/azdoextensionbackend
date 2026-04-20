@@ -35,7 +35,11 @@ def ask():
     try:
 
         if not question:
-            return jsonify({"error": "No question provided"}), 400
+            # return jsonify({"error": "No question provided"}), 400
+            return jsonify({
+            "answer": "No question provided",
+            "status": "error"
+        })
         
     except Exception as e:
         print("Error: ", e)
