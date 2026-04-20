@@ -26,7 +26,8 @@ def validate_azdo_token(token):
     try:
         response = requests.get(
             url,
-            headers={"Authorization": f"Bearer {token}"}
+            headers={"Authorization": f"Bearer {token}",
+                     "Accept": "application/json"}
         )
 
         return response.status_code == 200, response.text
