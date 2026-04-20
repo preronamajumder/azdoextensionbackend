@@ -11,15 +11,19 @@ CORS(app)
 def ask():
     #Extract token
     auth_header = request.headers.get("Authorization")
+    
     print("Authorization Header: ", auth_header)
     if not auth_header:
         abort(401, "Missing Authorization header")
 
     token = auth_header.split(" ")[1]
-    # token = auth_header
+    data = request.json
+    question = data.get("question", "")
+    org = data.get("org", "")
+    print(org)
 
     #Validate token with Azure DevOps
-    status, text = validate_azdo_token(token)
+    status, text = validate_azdo_token(token, org)
     if not status:
         # abort(401, "Invalid Azure DevOps token")
         return jsonify({
@@ -29,8 +33,6 @@ def ask():
 
     #Get question
     try:
-        data = request.json
-        question = data.get("question", "")
 
         if not question:
             return jsonify({"error": "No question provided"}), 400
