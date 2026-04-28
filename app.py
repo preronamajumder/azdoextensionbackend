@@ -20,6 +20,10 @@ def ask():
     data = request.json
     question = data.get("question", "")
     org = data.get("org", "")
+    work_item_id = data.get("workItemId")
+    title = data.get("title")
+    description = data.get("description")
+
     print(org)
 
     #Validate token with Azure DevOps
@@ -46,7 +50,7 @@ def ask():
         return jsonify({"error": "Failed to process request"}), 500
 
     #Generate mock response
-    answer = generate_response(question)
+    answer = generate_response(question, work_item_id, title, description)
 
     return jsonify({
         "answer": answer,
